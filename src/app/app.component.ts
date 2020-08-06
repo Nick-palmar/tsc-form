@@ -52,7 +52,8 @@ export class AppComponent {
 		this.userForm.get("questions").patchValue({[formControlName]: e.checked});
 		console.log(this.userForm.value);
 	}
-    
+	
+	// method to check if an input field has an error
 	error(formControlName: string, errorName: string) {
 		return this.userForm.controls[formControlName].hasError(errorName);
 	}
