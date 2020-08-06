@@ -1,0 +1,165 @@
+<div id="material-app">
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <mat-toolbar color="primary">
+        <h1>Daily Covid-19 System Checklist</h1>
+    </mat-toolbar>
+    
+    <img src="assets/images/coronavirus.png" alt="covid19 jpg">
+    
+    <p class="thick">Fields marked with an <span class="red">*</span> are required </p>
+    
+    <mat-form-field [formGroup]="userForm" appearance="outline">
+        <mat-label><strong>Practice Date <span class="red">*</span></strong></mat-label>
+        <input matInput [min]="minDate" [max]="maxDate" placeholder="Choose a date" [matDatepicker]="picker" formControlName="formDate">
+        <mat-divider></mat-divider>
+        <mat-hint>Calendar is to the right (MM/DD/YYYY)</mat-hint>
+        <mat-error *ngIf = "error('formDate', 'required')">Real date required (MM/DD/YYYY)</mat-error>
+        <!-- <mat-error *ngIf = "error('formDate', 'pattern')">Date must be in form MM/DD/YYYY</mat-error> -->
+        <mat-error *ngIf = "error('formDate', 'matDatepickerMin')">Date must be in the present or future</mat-error>
+        <mat-error *ngIf = "error('formDate', 'matDatepickerMax')">Choose a closer date</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <br><br>
+    
+    <mat-form-field [formGroup]="userForm" appearance="outline" class="form-container">
+        <mat-label><strong>Full Name <span class="red">*</span></strong></mat-label>
+        <input matInput placeholder="Name Here" formControlName="name" maxlength="30">
+        <mat-divider></mat-divider>
+        <mat-hint>Name must be between 3 and 30 characters</mat-hint>
+        <mat-error *ngIf = "error('name', 'required')">Name required</mat-error>
+        <mat-error *ngIf = "error('name', 'minlength')">Name is too short (3 character min)</mat-error>
+        <mat-error *ngIf = "error('name', 'pattern')">Invalid character entered</mat-error>
+            
+            
+    </mat-form-field>
+    
+    
+    <br>
+    
+    <mat-form-field [formGroup]="userForm" appearance="outline" class="form-container">
+        <mat-label><strong>Email <span class="red">*</span></strong></mat-label>
+        <input matInput placeholder="Email here" formControlName="email" maxlength="50">
+        <mat-divider></mat-divider>
+        <mat-hint>Email must be less than 50 characters</mat-hint>
+        <mat-error *ngIf = "error('email', 'required')">Email required</mat-error>
+        <mat-error *ngIf = "error('email', 'email')">Invalid email entered</mat-error>
+        
+    </mat-form-field>
+    
+    
+    <br>
+    
+    <mat-form-field [formGroup]="userForm" appearance="outline">
+        <mat-label><strong>Participant Role <span class="red">*</span></strong></mat-label>
+        <mat-select placeholder="Select Role" formControlName="role">
+            <mat-option value="p">Player</mat-option>
+            <mat-option value="c">Coach</mat-option>
+            <mat-option value="s">Staff</mat-option>
+            <mat-option value="o">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="error('role', 'required')">Participant role required</mat-error>
+      </mat-form-field>
+    
+    
+    <br>
+    <mat-form-field [formGroup]="userForm" appearance="outline">
+        <mat-label><strong>Age Group <span class="red">*</span></strong></mat-label>
+        <mat-select placeholder="Select Age Group" formControlName="age">
+            <mat-option value="U8">U-8</mat-option>
+            <mat-option value="U9">U-9</mat-option>
+            <mat-option value="U10">U-10</mat-option>
+            <mat-option value="U11">U-11</mat-option>
+            <mat-option value="U12">U-12</mat-option>
+            <mat-option value="U13">U-13</mat-option>
+            <mat-option value="U14">U-14</mat-option>
+            <mat-option value="U15">U-15</mat-option>
+            <mat-option value="U16">U-16</mat-option>
+            <mat-option value="U17">U-17</mat-option>
+            <mat-option value="U18">U-18</mat-option>
+        </mat-select>
+        <mat-error *ngIf="error('age', 'required')">Age group required</mat-error>
+    </mat-form-field>
+    
+    <br>
+    <p class="thick red">Check if applicable</p>
+    
+    <div formGroupName="questions">
+        <mat-card>
+            <mat-card-subtitle><strong><span class="red">1. </span>Do you have any of the below symptoms?</strong></mat-card-subtitle>
+            <mat-card-content>
+                <!-- <mat-label><strong><span class="blue">1. </span>Do you have any of the below symptoms?</strong></mat-label> -->
+                <mat-checkbox style="display: block;" (change)="onCheckboxChange($event, 'question1')" [checked]="userForm.controls['questions'].value.question1">a. Fever (greater than 38.0 C)</mat-checkbox>
+                <mat-checkbox style="display: block;" (change)="onCheckboxChange($event, 'question2')" [checked]="userForm.controls['questions'].value.question2">b. Cough</mat-checkbox>
+                <mat-checkbox style="display: block;" (change)="onCheckboxChange($event, 'question3')" [checked]="userForm.controls['questions'].value.question3">c. Shortness of breath/difficulty breathing</mat-checkbox>
+                <mat-checkbox style="display: block;" (change)="onCheckboxChange($event, 'question4')" [checked]="userForm.controls['questions'].value.question4">d. Sore throat</mat-checkbox>
+                <mat-checkbox style="display: block;" (change)="onCheckboxChange($event, 'question5')" [checked]="userForm.controls['questions'].value.question5">e. Runny nose</mat-checkbox>
+            </mat-card-content>
+        </mat-card>
+    
+        <br>
+    
+        <mat-card>
+            <mat-card-subtitle>
+                <mat-checkbox (change)="onCheckboxChange($event, 'question6')" [checked]="userForm.controls['questions'].value.question6"><strong><span class="red">2. </span>Has anyone in your household experienced any of the above symptoms (in question 1) in the last 14 days?</strong></mat-checkbox>
+            </mat-card-subtitle>
+        </mat-card>
+    
+        <br>
+    
+        <mat-card>
+            <mat-card-subtitle>
+                <mat-checkbox (change)="onCheckboxChange($event, 'question7')" [checked]="userForm.controls['questions'].value.question7"><strong><span class="red">3. </span>Have you, or anyone in your household travelled outside of Canada in the last 14 days?</strong></mat-checkbox>
+            </mat-card-subtitle>
+        </mat-card>
+    
+        <br>
+    
+        <mat-card>
+            <mat-card-subtitle>
+                <mat-checkbox (change)="onCheckboxChange($event, 'question8')" [checked]="userForm.controls['questions'].value.question8"><strong><span class="red">4. </span>Have you, or anyone in your household been in contact in the last 14 days with someone who is being investigated as a suspected case of COVID-19?</strong></mat-checkbox>
+            </mat-card-subtitle>
+        </mat-card>
+    
+        <br>
+    
+        <mat-card>
+            <mat-card-subtitle>
+                <mat-checkbox (change)="onCheckboxChange($event, 'question9')" [checked]="userForm.controls['questions'].value.question9"><strong><span class="red">5. </span>Are you currently being investigated as a suspected case of COVID-19?</strong></mat-checkbox>
+            </mat-card-subtitle>
+        </mat-card>
+    
+        <br>
+    
+        <mat-card>
+            <mat-card-subtitle>
+                <mat-checkbox (change)="onCheckboxChange($event, 'question10')" [checked]="userForm.controls['questions'].value.question10"><strong><span class="red">6. </span>Have you tested positive for COVID-19 within the last 10 days?</strong></mat-checkbox>
+            </mat-card-subtitle>
+        </mat-card>
+    </div>
+    
+    
+    <p class="thick red" style="font-size: 18px;">If you have selected any of the checkboxes, you are not permitted to participate in any in-person soccer activities for a minimum of 14 days.</p>
+    
+    <br>
+    
+    <p class="thick">Any additional feedback?</p>
+    <mat-form-field class="form-container" outline="fill">
+        <textarea matInput placeholder="Enter Here"></textarea>
+    </mat-form-field>
+    
+    
+    <mat-card>
+        <re-captcha (resolved)="resolved($event)" siteKey="6LfWCLsZAAAAAEHEgx3HSD3QnB-_OA24zwB0NuhI"></re-captcha>
+        <button mat-raised-button type="submit" [disabled]="isDisabled()" color="primary">Submit</button>
+    </mat-card>
+    
+    <div *ngIf="submitted">
+        <p class="thick red">Form Submitted!</p>
+    </div>
+    
+    </form>
+</div>
