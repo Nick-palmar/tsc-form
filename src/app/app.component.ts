@@ -57,6 +57,7 @@ export class AppComponent {
 		return this.userForm.controls[formControlName].hasError(errorName);
 	}
 	
+	// method to check if submit button is disabled
 	isDisabled() {
 		if (this.userForm.invalid || this.noRecaptcha) {
 			return true;
