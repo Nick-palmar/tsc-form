@@ -1,0 +1,15 @@
+ng new tutorial
+
+cd tutorial
+
+npm install --save @angular/material @angular/cdk @angular/core @angular/common
+
+ng generate module material
+
+npm install @angular/http@latest
+
+npm audit fix
+
+npm install --save @angular/animations
+
+npm install --save hammerjs
