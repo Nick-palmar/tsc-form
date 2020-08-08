@@ -1,0 +1,84 @@
+
+p {
+	font-family: 'Verdana';
+	font-size: 15px;
+	padding-left: 6px;
+}
+p.blue {
+	color: SlateBlue;
+}
+
+p.thick {
+  font-weight: bold;
+}
+
+p.red {
+	color:Tomato;
+}
+
+p.center {
+    text-align: center;
+}
+
+mat-toolbar div.center {
+    text-align: center;
+}
+
+div.down {
+    padding-top: 10px;
+}
+
+span {
+    padding-left: 10px;
+}
+span.red {
+	color:Tomato;
+}
+
+span.blue {
+	color: SlateBlue
+}
+
+div.border {
+	border-style: ridge;
+	padding: 5px;
+	
+}
+
+
+h1 {
+	font-size: 40px;
+}
+
+
+div {
+	width: 100%;
+}
+
+mat-card {
+	max-width: 1000%;
+}
+
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+
+.list-inline {
+    display:block;
+}
+.list-inline li {
+    display:inline-block;
+    
+}
+.list-inline li:after {
+    font-family: "Material Icons";
+    content: "\e53b";
+    margin:0px 70px;
+}

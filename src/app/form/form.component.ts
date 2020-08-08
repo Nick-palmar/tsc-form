@@ -68,7 +68,7 @@ export class FormComponent implements OnInit {
 		const day = new Date().getDate();
 
 		this.minDate = new Date(year, month, day);
-		this.maxDate = new Date(year, month, day+14);
+		this.maxDate = new Date(year, month, day);
 	  
 	}
 	getFormControlValue(controlName) {

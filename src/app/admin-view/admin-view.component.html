@@ -1,3 +1,52 @@
-<p>
-    admin-view works!
-</p>
+<div id="material-app">
+    <mat-toolbar color="primary">
+        <div class="center">
+            <mat-icon>assignment</mat-icon>      
+            <span>Admin: Covid-19 Forms</span>
+        </div>
+    </mat-toolbar>
+
+    <p class="red center"><strong>Filters</strong></p>
+    <mat-divider></mat-divider>
+
+    <ul class="list-inline">
+        <li>
+            <mat-checkbox color="primary"> Flagged Forms </mat-checkbox>
+        </li>
+        <li>
+            <mat-form-field appearance="outline">
+                <mat-label><strong>Age Group</strong></mat-label>
+                <mat-select>
+                <mat-option value="U8">U-8</mat-option>
+                <mat-option value="U9">U-9</mat-option>
+                <mat-option value="U10">U-10</mat-option>
+                <mat-option value="U11">U-11</mat-option>
+                <mat-option value="U12">U-12</mat-option>
+                <mat-option value="U13">U-13</mat-option>
+                <mat-option value="U14">U-14</mat-option>
+                <mat-option value="U15">U-15</mat-option>
+                <mat-option value="U16">U-16</mat-option>
+                <mat-option value="U17">U-17</mat-option>
+                <mat-option value="U18">U-18</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="outline">
+                <mat-label><strong>Date</strong></mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="outline">
+                <mat-label><strong>Name</strong></mat-label>
+                <input matInput>
+            </mat-form-field>
+        </li>
+    
+    </ul>
+    <mat-divider></mat-divider>
+
+</div>

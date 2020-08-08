@@ -3,7 +3,9 @@
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
     
     <mat-toolbar color="primary">
-        <h1>Daily Covid-19 System Checklist</h1>
+        <div class="center">
+            <h1>Daily Covid-19 System Checklist</h1>
+        </div>
     </mat-toolbar>
     
     <img src="assets/images/coronavirus.png" alt="covid19 jpg">
@@ -29,7 +31,7 @@
         <mat-label><strong>Full Name <span class="red">*</span></strong></mat-label>
         <input matInput placeholder="Name Here" formControlName="name" maxlength="30">
         <mat-divider></mat-divider>
-        <mat-hint>Name must be between 3 and 30 characters</mat-hint>
+        <mat-hint>Name must be between 3 and 30 characters. Please enter the name as registered with Thornhill</mat-hint>
         <mat-error *ngIf = "error('name', 'required')">Name required</mat-error>
         <mat-error *ngIf = "error('name', 'minlength')">Name is too short (3 character min)</mat-error>
         <mat-error *ngIf = "error('name', 'pattern')">Invalid character entered</mat-error>
