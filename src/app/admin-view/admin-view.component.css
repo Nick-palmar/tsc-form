@@ -24,6 +24,16 @@ mat-toolbar div.center {
     text-align: center;
 }
 
+div.btn-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin: 10px;
+    
+}
+
+
+
 div.down {
     padding-top: 10px;
 }
@@ -43,6 +53,10 @@ div.border {
 	border-style: ridge;
 	padding: 5px;
 	
+}
+
+div.grey {
+    color: rgb(100, 99, 99);
 }
 
 

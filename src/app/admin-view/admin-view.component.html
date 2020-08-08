@@ -1,4 +1,6 @@
 <div id="material-app">
+
+    <form [formGroup]="adminForm">
     <mat-toolbar color="primary">
         <div class="center">
             <mat-icon>assignment</mat-icon>      
@@ -11,42 +13,56 @@
 
     <ul class="list-inline">
         <li>
-            <mat-checkbox color="primary"> Flagged Forms </mat-checkbox>
+            
+            <mat-checkbox color="primary" formControlName="flagged" (change)="onCheckboxChange($event)" [checked]="adminForm.get('flagged').value"><strong><div class="grey">Flagged Forms</div></strong></mat-checkbox>
+        
         </li>
         <li>
-            <mat-form-field appearance="outline">
+            <mat-form-field [formGroup]="adminForm" appearance="outline">
                 <mat-label><strong>Age Group</strong></mat-label>
-                <mat-select>
-                <mat-option value="U8">U-8</mat-option>
-                <mat-option value="U9">U-9</mat-option>
-                <mat-option value="U10">U-10</mat-option>
-                <mat-option value="U11">U-11</mat-option>
-                <mat-option value="U12">U-12</mat-option>
-                <mat-option value="U13">U-13</mat-option>
-                <mat-option value="U14">U-14</mat-option>
-                <mat-option value="U15">U-15</mat-option>
-                <mat-option value="U16">U-16</mat-option>
-                <mat-option value="U17">U-17</mat-option>
-                <mat-option value="U18">U-18</mat-option>
+                <mat-select formControlName="age">
+                    <mat-option value="any">Any</mat-option>
+                    <mat-option value="U8">U-8</mat-option>
+                    <mat-option value="U9">U-9</mat-option>
+                    <mat-option value="U10">U-10</mat-option>
+                    <mat-option value="U11">U-11</mat-option>
+                    <mat-option value="U12">U-12</mat-option>
+                    <mat-option value="U13">U-13</mat-option>
+                    <mat-option value="U14">U-14</mat-option>
+                    <mat-option value="U15">U-15</mat-option>
+                    <mat-option value="U16">U-16</mat-option>
+                    <mat-option value="U17">U-17</mat-option>
+                    <mat-option value="U18">U-18</mat-option>
                 </mat-select>
             </mat-form-field>
         </li>
         <li>
-            <mat-form-field appearance="outline">
+            <mat-form-field [formGroup]="adminForm" appearance="outline">
                 <mat-label><strong>Date</strong></mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="picker" [max]="currentDate" formControlName="adminDate">
+                <mat-error *ngIf = "error('adminDate', 'matDatepickerMax')">Choose a closer date</mat-error>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </li>
         <li>
-            <mat-form-field appearance="outline">
+            <mat-form-field [formGroup]="adminForm" appearance="outline">
                 <mat-label><strong>Name</strong></mat-label>
-                <input matInput>
+                <input matInput formControlName="chosenName">
+                <mat-error *ngIf = "error('chosenName', 'pattern')">Invalid character entered</mat-error>
             </mat-form-field>
         </li>
     
     </ul>
     <mat-divider></mat-divider>
+
+    <div class="btn-container">
+            <button mat-raised-button (click)="onApplyChanges()" color="primary">Apply</button>
+            <button mat-raised-button (click)="onReset()" color="primary">Reset</button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    </form>
 
 </div>

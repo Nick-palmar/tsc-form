@@ -9,50 +9,50 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  userForm: FormGroup;
+	userForm: FormGroup;
 	submitted = false;
 	recaptcha: any[];
 	noRecaptcha = true;
 	
 	minDate: Date;
-  maxDate: Date;
+	maxDate: Date;
   
-  constructor(private fb: FormBuilder, private userSignService: UserSignService) { }
+	constructor(private fb: FormBuilder, private userSignService: UserSignService) { }
 
-  ngOnInit(): void {
-    this.userForm = this.fb.group({
-		  formDate: ["", [Validators.required]],
-		  name: ["", [Validators.required, Validators.minLength(3), Validators.pattern("^[a-zA-Z ]+$")]],
-		  email: ["", [Validators.required, Validators.email]],
-		  role: ["", Validators.required],
-		  age: ["", Validators.required],
-		  questions: this.fb.group({
-			  question1: [false],
-			  question2: [false],
-			  question3: [false],
-			  question4: [false],
-			  question5: [false],
-			  question6: [false],
-			  question7: [false],
-			  question8: [false],
-			  question9: [false],
-			  question10: [false]
-		  })
-	  })
-	  
-	  this.getDateBoundaries();
-  }
+	ngOnInit(): void {
+		this.userForm = this.fb.group({
+				formDate: ["", [Validators.required]],
+				name: ["", [Validators.required, Validators.minLength(3), Validators.pattern("^[a-zA-Z ]+$")]],
+				email: ["", [Validators.required, Validators.email]],
+				role: ["", Validators.required],
+				age: ["", Validators.required],
+				questions: this.fb.group({
+					question1: [false],
+					question2: [false],
+					question3: [false],
+					question4: [false],
+					question5: [false],
+					question6: [false],
+					question7: [false],
+					question8: [false],
+					question9: [false],
+					question10: [false]
+				})
+			})
+		
+		this.getDateBoundaries();
+	}
 
-  onCheckboxChange(e, formControlName) {
+	onCheckboxChange(e, formControlName: string) {
 		this.userForm.get("questions").patchValue({[formControlName]: e.checked});
 		console.log(this.userForm.value);
 	}
-	
+
 	// method to check if an input field has an error
 	error(formControlName: string, errorName: string) {
 		return this.userForm.controls[formControlName].hasError(errorName);
 	}
-	
+
 	// method to check if submit button is disabled
 	isDisabled() {
 		if (this.userForm.invalid || this.noRecaptcha) {
@@ -61,7 +61,7 @@ export class FormComponent implements OnInit {
 		return false;
 	}
 
-  
+
 	getDateBoundaries() {
 		const year = new Date().getFullYear();
 		const month = new Date().getMonth();
@@ -69,7 +69,7 @@ export class FormComponent implements OnInit {
 
 		this.minDate = new Date(year, month, day);
 		this.maxDate = new Date(year, month, day);
-	  
+		
 	}
 	getFormControlValue(controlName) {
 		return this.userForm.get(controlName).value;
@@ -77,15 +77,15 @@ export class FormComponent implements OnInit {
 	getFormGroupValue(group: string, controlName: string) {
 		return this.userForm.controls[group].value.controlName;
 	}
-	
+
 
 	resolved(captchaResponse: any[]) {
 		this.recaptcha = captchaResponse;
 		this.noRecaptcha = false;
 		console.log(this.recaptcha);
 	}
- 
-  
+
+
 	onSubmit() {
 		if (this.userForm.valid) {
 			
@@ -133,7 +133,7 @@ export class FormComponent implements OnInit {
 				this.userForm.get("questions").patchValue({[question]: false});
 			}
 		}
-	
+
 	}
 
 }
