@@ -40,6 +40,7 @@
             <mat-form-field [formGroup]="adminForm" appearance="outline">
                 <mat-label><strong>Date</strong></mat-label>
                 <input matInput [matDatepicker]="picker" [max]="currentDate" formControlName="adminDate">
+                <mat-error *ngIf = "error('adminDate', 'required')">Real date required (MM/DD/YYYY)</mat-error>
                 <mat-error *ngIf = "error('adminDate', 'matDatepickerMax')">Choose a closer date</mat-error>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -57,7 +58,7 @@
     <mat-divider></mat-divider>
 
     <div class="btn-container">
-            <button mat-raised-button (click)="onApplyChanges()" color="primary">Apply</button>
+            <button mat-raised-button (click)="onApplyChanges()" [disabled]="adminForm.invalid" color="primary">Apply</button>
             <button mat-raised-button (click)="onReset()" color="primary">Reset</button>
     </div>
 

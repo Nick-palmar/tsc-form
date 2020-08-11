@@ -20,7 +20,7 @@ export class AdminViewComponent implements OnInit {
     this.adminForm = this.fb.group({
       flagged: [false],
       age: ["any"],
-      adminDate: [this.currentDate],
+      adminDate: [this.currentDate, Validators.required],
       chosenName: ["", Validators.pattern("^[a-zA-Z ]+$")]
     })
 
@@ -38,12 +38,14 @@ export class AdminViewComponent implements OnInit {
   }
 
   onApplyChanges() {
-    console.log(this.adminForm.value);
-    let chosenDate  = this.adminForm.get("adminDate").value;
-    let pipe = new DatePipe('en-CA');
-    let formattedDate = pipe.transform(chosenDate, 'yyyy/MM/dd');
-    console.log(formattedDate);
-    console.log("apply, send to java/sql");
+    if (this.adminForm.valid) {
+      console.log(this.adminForm.value);
+      let chosenDate  = this.adminForm.get("adminDate").value;
+      let pipe = new DatePipe('en-CA');
+      let formattedDate = pipe.transform(chosenDate, 'yyyy/MM/dd');
+      console.log(formattedDate);
+      console.log("apply, send to java/sql");
+    }
   }
 
   // method to check if an input field has an error
@@ -55,7 +57,7 @@ export class AdminViewComponent implements OnInit {
 
     //reset form for visual purposes
     this.adminForm.reset();
-    
+
     // patch values to avoid errors
     this.adminForm.patchValue({chosenName: ""})
     this.adminForm.patchValue({flagged: false});
