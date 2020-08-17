@@ -18,4 +18,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [FormComponent, AdminViewComponent];
+export const routingComponents = [FormComponent, AdminViewComponent, PageNotFoundComponent];

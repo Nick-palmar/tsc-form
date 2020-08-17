@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { AdminFilterService } from '../admin-filter.service';
+import { SelectedForm } from '../selected-form';
 
 @Component({
   selector: 'app-admin-view',
@@ -11,8 +13,9 @@ export class AdminViewComponent implements OnInit {
 
   adminForm: FormGroup;
   currentDate: Date;
+  selectedForms: SelectedForm[];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private adminFilterService: AdminFilterService) { }
 
   ngOnInit(): void {
     this.getDate();
@@ -44,7 +47,16 @@ export class AdminViewComponent implements OnInit {
       let pipe = new DatePipe('en-CA');
       let formattedDate = pipe.transform(chosenDate, 'yyyy/MM/dd');
       console.log(formattedDate);
-      console.log("apply, send to java/sql");
+      let name = this.adminForm.get('chosenName').value;
+      let flaggedForm = this.adminForm.get('flagged').value;
+      let ageGroup = this.adminForm.get('age').value;
+      
+      this.adminFilterService.filter(flaggedForm, ageGroup, formattedDate, name).subscribe(
+        selectedForms => {this.selectedForms = selectedForms;
+                          console.log(this.selectedForms);
+        },
+        error => console.error("Error", error)
+      );
     }
   }
 

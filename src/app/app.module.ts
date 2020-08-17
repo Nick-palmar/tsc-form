@@ -60,13 +60,10 @@ import {MatTreeModule} from '@angular/material/tree';
 
 import { BrowserAnimationsModule } 
        from '@angular/platform-browser/animations';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    PageNotFoundComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
