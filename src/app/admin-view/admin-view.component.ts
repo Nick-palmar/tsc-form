@@ -85,5 +85,7 @@ export class AdminViewComponent implements OnInit {
     console.log(this.adminForm.value);
   }
 
-
+  // values for test table
+  displayedColumns = ['role', 'name', 'ageGroup', 'email', 'formDate', 'flagged'];
+  myForms: SelectedForm[] = [new SelectedForm("nicolas", "2020-08-12", "U18", "n.p@g.com", "player", "false"), new SelectedForm("lucas", "2020-08-12", "U13", "l.p@g.com", "player", "false"), new SelectedForm("oscar", "2020-08-12", "U13", "o.p@g.com", "coach", "true")];
 }

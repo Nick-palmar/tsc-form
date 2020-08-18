@@ -1,3 +1,5 @@
+import { routingComponents } from './app-routing.module';
+
 export class SelectedForm {
     name: string;
     formDate; // form date is of type java.sql.Date
@@ -15,4 +17,14 @@ export class SelectedForm {
 	question9: boolean;
     question10: boolean;
     flagged: boolean;
+
+    // for testing purposes
+    constructor(name, formDate, ageGroup, email, role, flagged) {
+        this.name = name;
+        this.formDate = formDate;
+        this.ageGroup = ageGroup;
+        this.email = email;
+        this.role = role;
+        this.flagged = flagged;
+    }
 }

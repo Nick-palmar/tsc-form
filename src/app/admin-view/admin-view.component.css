@@ -32,6 +32,12 @@ div.btn-container {
     
 }
 
+.large-font-red {
+    font-size: 15px;
+    font-weight: bold;
+    color:Tomato;
+}
+
 
 
 div.down {
@@ -95,4 +101,8 @@ mat-card {
     font-family: "Material Icons";
     content: "\e53b";
     margin:0px 70px;
+}
+
+table {
+    width: 100%;
 }
