@@ -7,7 +7,7 @@ import { SelectedForm } from './selected-form';
   providedIn: 'root'
 })
 export class AdminFilterService {
-  private _appUrl = 'https://nicolas-p-app.herokuapp.com/admin';
+  private _appUrl = 'https://nicolas-p-app.herokuapp.com/admin/find';
   constructor(private _http: HttpClient) { }
 
   getUrl() {
