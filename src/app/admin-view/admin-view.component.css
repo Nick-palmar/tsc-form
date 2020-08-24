@@ -10,6 +10,7 @@ p.blue {
 
 p.thick {
   font-weight: bold;
+  font-size: 18px;
 }
 
 p.red {
@@ -91,18 +92,19 @@ mat-card {
 
 
 .list-inline {
-    display:block;
+    list-style:none;
+    padding: 0;
+    max-width:1200px;
+    margin:0 auto;
 }
 .list-inline li {
     display:inline-block;
+    padding: 2%;
+  margin: 1%;
+  font-weight: bold;
+  text-align: center;
     
 }
-.list-inline li:after {
-    font-family: "Material Icons";
-    content: "\e53b";
-    margin:0px 70px;
-}
-
 table {
     width: 100%;
 }

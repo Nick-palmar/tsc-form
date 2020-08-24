@@ -11,10 +11,28 @@ p.blue {
 
 p.thick {
   font-weight: bold;
+  font-size: 18px;
 }
 
 p.red {
 	color:Tomato;
+}
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline;
+}
+
+p.light-grey div.justify{
+	color: rgb(153, 143, 143);
+}
+
+div.justify {
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 span.red {
@@ -50,7 +68,12 @@ div {
 }
 
 mat-card {
-	max-width: 1000%;
+	display: flex;
+	flex-direction: column;
+}
+
+mat-checkbox-label {
+	display: flex;
 }
 
 
@@ -61,4 +84,8 @@ mat-card {
 
 .form-container > * {
   width: 100%;
+}
+
+.width-adapt {
+	margin-right: 700px;
 }
