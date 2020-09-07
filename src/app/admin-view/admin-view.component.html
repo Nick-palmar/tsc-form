@@ -3,7 +3,7 @@
     <form [formGroup]="adminForm">
     <mat-toolbar color="primary">
         <div class="center">
-            <mat-icon>assignment</mat-icon>      
+            <mat-icon>admin_panel_settings</mat-icon>      
             <span>Admin: Covid-19 Forms</span>
         </div>
     </mat-toolbar>
@@ -65,47 +65,47 @@
     <mat-divider></mat-divider>
     
 
-    <table mat-table [dataSource]="selectedForms">
+    <mat-table [dataSource]="selectedForms">
       
         <!-- Role Column -->
         <ng-container matColumnDef="role">
-          <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Role </th>
-          <td mat-cell *matCellDef="let form"> {{form.role}} </td>
+          <mat-header-cell *matHeaderCellDef class = "large-font-red"> Role </mat-header-cell>
+          <mat-cell *matCellDef="let form" data-label="role"> {{form.role}} </mat-cell>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Name </th>
-          <td mat-cell *matCellDef="let form"> {{form.name}} </td>
+          <mat-header-cell *matHeaderCellDef class = "large-font-red"> Name </mat-header-cell>
+          <mat-cell *matCellDef="let form" data-label="name"> {{form.name}} </mat-cell>
         </ng-container>
       
         <!-- Team/Age group Column -->
         <ng-container matColumnDef="age">
-          <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Team </th>
-          <td mat-cell *matCellDef="let form"> {{form.age}} </td>
+          <mat-header-cell *matHeaderCellDef class = "large-font-red"> Team </mat-header-cell>
+          <mat-cell *matCellDef="let form" data-label="team"> {{form.age}} </mat-cell>
         </ng-container>
       
         <!-- Email Column -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Email </th>
-          <td mat-cell *matCellDef="let form"> {{form.email}} </td>
+          <mat-header-cell *matHeaderCellDef class = "large-font-red"> Email </mat-header-cell>
+          <mat-cell *matCellDef="let form" data-label="email"> {{form.email}} </mat-cell>
         </ng-container>
         
         <!-- Date Column -->
         <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Date </th>
-            <td mat-cell *matCellDef="let form"> {{form.date}} </td>
+            <mat-header-cell *matHeaderCellDef class = "large-font-red"> Date </mat-header-cell>
+            <mat-cell *matCellDef="let form" data-label="date"> {{form.date}} </mat-cell>
           </ng-container>
 
         <!-- Status Column -->
         <ng-container matColumnDef="flagStatus">
-            <th mat-header-cell *matHeaderCellDef class = "large-font-red"> Status </th>
-            <td mat-cell *matCellDef="let form"> {{form.flagStatus}} </td>
+            <mat-header-cell *matHeaderCellDef class = "large-font-red"> Status </mat-header-cell>
+            <mat-cell *matCellDef="let form" data-label="status"> {{form.flagStatus}} </mat-cell>
         </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
 
     </form>
 

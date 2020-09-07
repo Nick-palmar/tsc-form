@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserSignService {
-	private _appUrl = 'https://nicolas-p-app.herokuapp.com/form';
+	private _appUrl = 'https://nicolas-p-app.herokuapp.com/submit';
 	constructor(private _http: HttpClient) { }
 	
 	getUrl() {

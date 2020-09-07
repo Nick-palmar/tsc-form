@@ -18,6 +18,8 @@ export class AdminViewComponent implements OnInit {
 
   // columns for table
   displayedColumns = ['role', 'name', 'age', 'email', 'date', 'flagStatus'];
+  // selectedForms = [{'role': 'c', 'name': 'nick', 'age': 'U8', 'email': 'n.p.com', 'date': '2020-08-06', 'flagStatus': "f"},
+  // {'role': 'c', 'name': 'nick', 'age': 'U8', 'email': 'n.p.com', 'date': '2020-08-06', 'flagStatus': "f"}];
 
   constructor(private fb: FormBuilder, private adminFilterService: AdminFilterService) { }
 
@@ -90,5 +92,6 @@ export class AdminViewComponent implements OnInit {
     this.adminForm.patchValue({flagged: event.checked});
     console.log(this.adminForm.value);
   }
+
 
 }
